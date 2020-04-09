@@ -1,26 +1,37 @@
-import React from 'react';
-import GuestScreen from './Components/GuestScreen';
-import socketIOClient from 'socket.io-client';
-import './app-style.css';
+import React from "react";
+import socketIOClient from "socket.io-client";
+import "./app-style.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Landing from "./Components/Landing";
 
 let socket;
 
-class App extends React.Component{
-  constructor(props){
+class App extends React.Component {
+  constructor(props) {
     super(props);
-    this.state={
+    this.state = {
+      chatRoomList: [
+        "general",
+        "gaming",
+        "nsfw",
+        "politics",
+        "anime",
+        "startrek",
+        "chinaflu",
+      ],
+    };
 
-    }
-    socket = socketIOClient("localhost:3001");
+    //socket = socketIOClient("remotehost:3001"); //IP for when deployed goes here
+    socket = socketIOClient("localhost:3001"); // Used for Testing
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <>
-        <GuestScreen></GuestScreen>
+        <Landing chatRoomList={this.state.chatRoomList}></Landing>
       </>
     );
   }
 }
 
-export {App, socket}
+export { App, socket };

@@ -1,9 +1,7 @@
-const express = require('express');
+const express = require("express");
+const bcrypt = require("bcryptjs");
 const server = express.Router();
 
-server.route('/user').post((req,res,next) => {
-
-})
-
+server.route("/").get((req, res, next) => {});
 
 module.exports = server;

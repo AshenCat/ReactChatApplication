@@ -1,0 +1,69 @@
+body {
+  background-color: #e9e9e9;
+  height: 100%;
+  padding-top: 1rem;
+}
+/*Chat Room*/
+#messageArea {
+  background-color: white;
+  font-size: 1.2em;
+  overflow-y: auto;
+  word-wrap: break-word;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  height: 72vh;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+#messageArea p {
+  color: #111;
+  background-clip: padding-box;
+  background-color: #e9e9e9;
+  min-width: 25%;
+  max-width: 70%;
+  display: inline-block;
+  padding: 16px;
+  border-radius: 15px 15px 15px 0px;
+}
+
+.chatContainer {
+  padding-top: 16px;
+  padding-left: 16px;
+  background-color: lightgrey;
+  margin: auto;
+  height: 92vh;
+  width: 80%;
+  border-radius: 8px;
+}
+
+.composeArea {
+  margin-top: 16px;
+}
+
+/* Guest Landing Page */
+.landingContainer {
+  padding-top: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  background-color: lightgrey;
+  margin: auto;
+  height: 92vh;
+  min-width: 50%;
+  border-radius: 8px;
+}
+.roomList {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 72vh;
+}
+
+/* Users List*/
+.userList {
+  border-radius: 8px;
+  background-color: white;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 72vh;
+  max-height: 72vh;
+}
