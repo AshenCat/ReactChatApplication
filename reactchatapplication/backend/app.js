@@ -29,7 +29,7 @@ mongoose.connect(
     else console.log("Successfully connected to remote DB");
   }
 );
-
+mongoose.set('useCreateIndex', true);
 userList = {
   general: [],
   gaming: [],
@@ -180,4 +180,4 @@ app.use((err, req, res, next) => {
   res.json(error)
 })
 
-server.listen(port, () => `API running @ port ${port}`);
+server.listen(port, () => console.log(`API running @ port ${port}`));

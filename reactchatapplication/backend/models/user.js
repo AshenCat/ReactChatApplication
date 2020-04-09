@@ -3,11 +3,12 @@ const Schema = mongoose.Schema;
 
 let User = new Schema(
   {
-    Username: {
+    username: {
       type: String,
       required: true,
+      unique: true
     },
-    Password: {
+    password: {
       type: String,
       required: true,
     },
@@ -15,4 +16,4 @@ let User = new Schema(
   { timestamps: true }
 );
 
-module.exports = User;
+module.exports = mongoose.model("user", User);
