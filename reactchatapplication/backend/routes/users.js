@@ -1,11 +1,18 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
+const passport = require("passport");
 
 let userModel = require("../models/user");
 
 const server = express.Router();
 
 server.route("/register").put((req, res, next) => {
+    const { username, password } = req.body;
+    if (!username || !password) {
+        res.status(400);
+        let err = new Error
+        next()
+    }
     bcrypt.genSalt(10, (err, salt) => {
         if (err) next(err);
         bcrypt.hash(req.body.password, salt, (err, hash) => {
@@ -27,22 +34,11 @@ server.route("/register").put((req, res, next) => {
 });
 
 server.route("/login").post((req,res,next)=>{
-    userModel.findOne({username: req.body.username}, (err, doc) => {
-        if (err) next(err);
-        else
-            // console.log(doc);
-            bcrypt.compare(req.body.password, doc.password, (err,result)=>{
-                if(err) next(err);
-                if(result){
-                    delete res.password
-                    res.json({
-                        status: "OK",
-                        result
-                    })
-                }
-            })
-    })
-})
+    passport.authenticate('local', {
+        successRedirect: '/dashboard',
+        failureRedirect: '/users/login'
+    })(req,res,next);
+});
 
 server.route("/").get((req,res,next)=>{
     userModel.find({}, (err,doc)=>{

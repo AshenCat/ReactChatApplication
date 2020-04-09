@@ -8,6 +8,10 @@ const morgan = require("morgan");
 const path = require("path");
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
+const passport = require("passport");
+const initializePassport = require('./conf/passport-config')(passport);
+const session = require('express-session')
+// initializePassport(passport);
 
 const port = process.env.PORT || 3001;
 
@@ -169,6 +173,15 @@ app.use("/api/chatlog", messageRoute);
 app.use("/api/events", eventRoute);
 app.use("/api/rooms", roomRoute);
 app.use("/api/users", userRoute);
+
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use((req, res, next) => {
   if (res.status === 200) res.status = 404
