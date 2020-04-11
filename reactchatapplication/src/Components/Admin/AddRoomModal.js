@@ -39,7 +39,7 @@ const ShowAddModal = () => {
         Add Room
       </Button>
 
-      <Modal animation={false} show={show} onHide={handleClose}>
+      <Modal animation={false} show={show} onHide={handleNoSaveClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Room</Modal.Title>
         </Modal.Header>
@@ -71,7 +71,7 @@ const ShowAddModal = () => {
             Close
           </Button>
           <Button variant="primary" onClick={handleClose}>
-            Save Changes
+            Add Room
           </Button>
         </Modal.Footer>
       </Modal>

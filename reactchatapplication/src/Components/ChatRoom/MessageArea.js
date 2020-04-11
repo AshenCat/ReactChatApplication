@@ -21,11 +21,12 @@ class MessageArea extends React.Component {
 
   render() {
     return (
-      <div id="messageArea">
+      <>
         <b id="head">Chat Log:</b>
-        <br />
-        {this.state.alltext !== []
-          ? this.state.alltext.map((val, ctr) => {
+        <div id="messageArea">
+          <br />
+          {this.state.alltext !== []
+            ? this.state.alltext.map((val, ctr) => {
               return (
                 <div className="entry" key={ctr}>
                   <p>
@@ -39,8 +40,9 @@ class MessageArea extends React.Component {
                 </div>
               );
             })
-          : "no room"}
-      </div>
+            : "no room"}
+        </div>
+      </>
     );
   }
 }

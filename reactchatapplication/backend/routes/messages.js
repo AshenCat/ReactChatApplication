@@ -14,4 +14,13 @@ server.route("/").get((req, res, next) => {
   });
 });
 
+/*Delete all entries
+server.route("/delete-all").delete((req, res) => {
+  chatHistoryModel.deleteMany({}, (err, result) => {
+    if (err) res.send(err);
+    else res.send(result);
+  })
+})*/
+
+
 module.exports = server;

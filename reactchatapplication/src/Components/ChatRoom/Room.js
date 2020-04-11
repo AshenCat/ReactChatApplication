@@ -17,24 +17,19 @@ export default class App extends React.Component {
   render() {
     return (
       <Container className="chatContainer">
-        <Col lg={12}>
-          <Row className="justify-content-md-center">
+        <Row className="justify-content-md-center">
+          <Col sm={9}>
             <h1>{this.state.room}</h1>
-          </Row>
-          <Row>
-            <Col lg={10}>
-              <MessageArea alltext={this.state.alltext}></MessageArea>
-              <MessageComposer
-                room={this.state.room}
-                name={this.state.name}
-              ></MessageComposer>
-            </Col>
-            <Col sm={2}>
-              <UserList userList={this.state.userList} />
-            </Col>
-          </Row>
-        </Col>
-      </Container>
+            <MessageArea alltext={this.state.alltext}></MessageArea>
+            <MessageComposer
+              room={this.state.room}
+              name={this.state.name}
+            ></MessageComposer>
+          </Col>
+          <Col sm={3} className="d-none d-sm-block">
+            <UserList userList={this.state.userList} /></Col>
+        </Row>
+      </Container >
     );
   }
 }

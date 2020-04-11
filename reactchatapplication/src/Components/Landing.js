@@ -10,7 +10,6 @@ export default class Landing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chatRoomList: [...this.props.chatRoomList],
       selectedRoom: undefined,
       name: undefined,
       navLocation: "",
@@ -85,7 +84,7 @@ export default class Landing extends React.Component {
   onEnterKey = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      this.handleClick();
+      this.addNotification();
     }
   };
   setLocLogin = () => {
@@ -130,7 +129,6 @@ export default class Landing extends React.Component {
               <Col>
                 <RoomList
                   onRoomSelect={this.selectionMade}
-                  chatRoomList={this.state.chatRoomList}
                 ></RoomList>
               </Col>
             </Row>

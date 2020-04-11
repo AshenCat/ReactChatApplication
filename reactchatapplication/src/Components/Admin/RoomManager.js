@@ -2,12 +2,13 @@ import React from "react";
 import { MDBDataTable } from "mdbreact";
 import { Col, Row, Container, Button } from "react-bootstrap";
 import ShowAddModal from "./AddRoomModal";
+import ShowEditModal from "./EditRoomModal";
 import Axios from "axios";
 
 class RoomManager extends React.Component {
   state = {
     columns: [],
-    rows: []
+    rows: [],
   };
   componentDidMount() {
     this.retrieveEvents();
@@ -27,13 +28,21 @@ class RoomManager extends React.Component {
         dataColumns.push({ label: "Action", field: "editField", sort: "asc" })
         let newRes = []
         response.data.map(item => {
-          item.editField = (<Button size="sm" variant="light">Edit</Button>)
-          newRes.push(item)
+          let newObj = {
+            n: item.Name,
+            s: item.Status,
+            i: item._id
+          }
+          item.editField = <Button onClick={() => this.handleClick(newObj)} size="sm" variant="light">Edit</Button>
+          return newRes.push(item)
         })
         this.setState({ columns: dataColumns, rows: [...newRes] });
       })
       .catch((error) => console.log(error));
   };
+  handleClick = (data) => {
+    return <ShowEditModal show state={this.state}></ShowEditModal>;
+  }
   render() {
     return (
       <>
@@ -71,74 +80,3 @@ class RoomManager extends React.Component {
 }
 
 export default RoomManager;
-/*      columns: [
-        {
-          label: "ID",
-          field: "id",
-          sort: "asc",
-        },
-        {
-          label: "Room Name",
-          field: "room",
-          sort: "asc",
-        },
-        {
-          label: "Date Created",
-          field: "dateCreated",
-          sort: "asc",
-        },
-        {
-          label: "Edit Date",
-          field: "dateEdited",
-          sort: "asc",
-        },
-        {
-          label: "Status",
-          field: "status",
-          sort: "asc",
-        },
-        {
-          label: "",
-          field: "editField",
-          sort: "asc",
-        },
-      ],
-      rows: [
-        {
-          id: 1,
-          room: "general",
-          dateCreated: "05/04/2020",
-          dateEdited: "05/04/2020",
-          status: "Active",
-          editField: (
-            <Button size="sm" variant="light">
-              Edit
-            </Button>
-          ),
-        },
-        {
-          id: 2,
-          room: "gaming",
-          dateCreated: "05/04/2020",
-          dateEdited: "05/04/2020",
-          status: "Inactive",
-          editField: (
-            <Button size="sm" variant="light">
-              Edit
-            </Button>
-          ),
-        },
-        {
-          id: 3,
-          room: "nsfw",
-          dateCreated: "05/04/2020",
-          dateEdited: "05/04/2020",
-          status: "Active",
-          editField: (
-            <Button size="sm" variant="light">
-              Edit
-            </Button>
-          ),
-        },
-      ],
-      */

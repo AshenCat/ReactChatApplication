@@ -20,7 +20,7 @@ let conf = require("./conf/dbconf");
 let userModel = require("./models/user");
 let chatHistoryModel = require("./models/chat");
 let eventHistoryModel = require("./models/event");
-
+let roomModel = require("./models/room");
 mongoose.connect(
   conf,
   { useNewUrlParser: true, useUnifiedTopology: true },
@@ -30,15 +30,17 @@ mongoose.connect(
   }
 );
 
-userList = {
-  general: [],
-  gaming: [],
-  nsfw: [],
-  politics: [],
-  anime: [],
-  startrek: [],
-  chinaflu: [],
-};
+mongoose.set('useCreateIndex', true);
+let userList = {};
+
+roomModel.find({}, { status: false }, (err, doc) => {
+  if (err) throw err;
+  else {
+    doc.map(value => {
+      return userList[value.Name] = [];
+    });
+  }
+})
 
 io.on("connection", (socket) => {
   eventHistoryModel.create(

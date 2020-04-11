@@ -14,11 +14,13 @@ server.route("/").get((req, res, next) => {
   });
 });
 
-server.route("/deleteeverything").get((req, res, next) => {
-  eventHistoryModel.remove({}, (err) => {
-    if (err) next(err);
-    else res.end("Success");
-  });
-});
+/*Delete all entries
+server.route("/delete-all").delete((req, res) => {
+  eventHistoryModel.deleteMany({}, (err, result) => {
+    if (err) res.send(err);
+    else res.send(result);
+  })
+})*/
+
 
 module.exports = server;
