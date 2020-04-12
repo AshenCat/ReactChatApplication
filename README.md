@@ -18,9 +18,9 @@ admin/admin
   - [x] Chat Screen
   - [ ] Admin Login Screen [JWT, or PASSPORT.JS]
 - [ ] Admin
-  - [ ] Event History : Event Type(CONNECTED, JOINED, ERROR), Date, Time, User, EventID, PPID
-  - [ ] Chat History(Pagination, Sorting, Filter) : MessageID, Date, Time, MessageSender, MessageReceiver, Message, Room
-  - [ ] Rooms(Pagination, Sorting, Filter) : RoomID, Room Name, Created Date, Edit Date, Status, Add New Room
+  - [x] Event History : Event Type(CONNECTED, JOINED, ERROR), Date, Time, User, EventID, PPID
+  - [x] Chat History(Pagination, Sorting, Filter) : MessageID, Date, Time, MessageSender, MessageReceiver, Message, Room
+  - [x] Rooms(Pagination, Sorting, Filter) : RoomID, Room Name, Created Date, Edit Date, Status, Add New Room
   - [ ] Add/Edit Room Screen(Basic validation, no nameless room) : RoomName, Status(Active, Inactive)
 
 ## Backend
